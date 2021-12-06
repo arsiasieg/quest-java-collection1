@@ -16,36 +16,38 @@ public class Thanos {
         // name: Thor, age: 1500
         // name: Hulk, age: 49
         // name: Doctor Strange, age: 42
-    	Hero blackWidow = new Hero("Black Widow", 34);
-    	Hero captainAmeria = new Hero("Captain America", 100);
-    	Hero vision = new Hero("Vision", 3);
-    	Hero ironMan = new Hero("Iron man", 48);
-    	Hero scarletWitch = new Hero("Scarlet Witch", 29);
-    	Hero thor = new Hero("Thor", 1500);
-    	Hero hulk = new Hero("Hulk", 49);
-    	Hero doctorStrange = new Hero("Doctor Strange", 42);
+    	heroes.add(new Hero("Iron Man", 48));
+    	heroes.add(new Hero("Black Widow", 34));
+     	heroes.add(new Hero("Captain America", 100));
+     	heroes.add(new Hero("Vision", 3));
+     	heroes.add(new Hero("Scarlett Witch", 29));
+     	heroes.add(new Hero("Thor", 1500));
+     	heroes.add(new Hero("Hulk", 49));
+     	heroes.add(new Hero("Doctor Strange", 42));
     	
-    	heroes.add(blackWidow);
-    	heroes.add(captainAmeria);
-    	heroes.add(vision);
-    	heroes.add(ironMan);
-    	heroes.add(scarletWitch);
-    	heroes.add(thor);
-    	heroes.add(hulk);
-    	heroes.add(doctorStrange);    	
+    	// TODO 1 : Modify Hero to implements Comparable and sort by name (ascending)
+     	Comparator<Hero> comparator = new Comparator<Hero>() {
+			
+			@Override
+			public int compare(Hero hero1, Hero hero2) {
+				// TODO Auto-generated method stub
+				return hero1.getName().compareTo(hero2.getName());
+			}
+		};
+		
+		Collections.sort(heroes, comparator);
+        System.out.println("\nOrder by name:");
+        showList(heroes);
 
-        // TODO 3 : It's Thor birthday, now he's 1501
-    	thor.setAge(1501);
+        // TODO 2: Add a Comparator and sort by age (descending)
+        Collections.sort(heroes);
+        System.out.println("\nOrder by age:");
+        showList(heroes);
+    }
 
-        // TODO 4 : Shuffle the heroes list
-    	Collections.shuffle(heroes);
-
-        // TODO 5 : Keep only the half of the list
-    	heroes = heroes.subList(0, (heroes.size()/2));
-
-        // TODO 6 : Loop throught the list and display the name of the remaining heroes
-    	for (Hero heroe : heroes) {
-    		System.out.println(heroe.getName() + " (" + heroe.getAge() + " ans).");
-    	}
+    private static void showList(List<Hero> heroes) {
+        for (Hero heroe : heroes) {
+            System.out.println(heroe.getName() + ", " + heroe.getAge());
+        }
     }
 }
