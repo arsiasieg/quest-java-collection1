@@ -45,7 +45,7 @@ public class Thanos {
 
         // TODO 6 : Loop throught the list and display the name of the remaining heroes
     	for (Hero heroe : heroes) {
-    		System.out.println(heroe.getName());
+    		System.out.println(heroe.getName() + " (" + heroe.getAge() + " ans).");
     	}
     }
 }
